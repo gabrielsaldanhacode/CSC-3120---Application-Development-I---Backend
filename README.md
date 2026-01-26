@@ -25,3 +25,5 @@
 # Install the tools: Run npm install in your terminal to grab the Express framework.
 # Launch the server: Type node server.js to start the backend.
 # Verify it's working: Visit http://localhost:3000/status in your browser. You should see a message confirming the server is active.
+
+# "Module 1 foundation only"
