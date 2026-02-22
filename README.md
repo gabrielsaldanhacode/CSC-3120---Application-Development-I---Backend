@@ -27,3 +27,7 @@
 # Verify it's working: Visit http://localhost:3000/status in your browser. You should see a message confirming the server is active.
 
 # "Module 1 foundation only"
+
+# In Milestone 2, I designed and implemented the relational MySQL database schema for the Campus Resource Reservation API. I created the core tables for users, resources, and reservations, ensuring they were properly linked using foreign key relationships. Additionally, I improved the database's realism by adding custom fields like room capacity and enforced data integrity with time-based constraints.
+
+# Current Status: Milestone 3 complete. Implemented basic GET and POST API routes and connected the Express server to the MySQL database.
