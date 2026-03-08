@@ -10,4 +10,4 @@
 
 ### 3. Successful request after validation
 * **What I did:** Sent a POST request to `/users` with both `full_name` and `email` included correctly.
-* **What happened:** The validation middleware let the request pass through, and the user was successfully created in the database with a 201 Created status.
+* **What happened:** The validation middleware let the request pass through and the user was successfully created in the database with a 201 Created status.
