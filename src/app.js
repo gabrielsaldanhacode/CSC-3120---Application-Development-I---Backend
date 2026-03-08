@@ -1,3 +1,4 @@
+const errorHandler = require('./middleware/errorHandler');
 const express = require('express');
 const usersRoutes = require('./routes/users');
 const resourcesRoutes = require('./routes/resources');
@@ -11,4 +12,5 @@ app.use('/api/users', usersRoutes);
 app.use('/api/resources', resourcesRoutes);
 app.use('/api/reservations', reservationsRoutes);
 
+app.use(errorHandler);
 module.exports = app;

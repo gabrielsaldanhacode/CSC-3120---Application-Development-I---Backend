@@ -1,3 +1,4 @@
+const validate = require('../middleware/validateRequest');
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
@@ -7,7 +8,7 @@ router.get('/', async (req, res) => {
   res.json(rows);
 });
  
-router.post('/', async (req, res) => {
+router.post('/', validate(['resource_name', 'resource_type']),async (req, res) => {
   const { resource_name, resource_type, location } = req.body;
  
   const [result] = await db.query(
