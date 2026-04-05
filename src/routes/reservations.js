@@ -1,19 +1,21 @@
 const validate = require('../middleware/validateRequest');
-const auth = require('../middleware/authMiddleware'); // <--- ADD THIS
+const auth = require('../middleware/authMiddleware'); 
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-// Anyone can see reservations
-router.get('/', async (req, res) => {
-  const [rows] = await db.query('SELECT * FROM reservations');
-  res.json(rows);
+router.get('/', async (req, res, next) => {
+  try {
+    const [rows] = await db.query('SELECT * FROM reservations');
+    res.json(rows);
+  } catch (err) {
+    next(err); 
+  }
 });
 
-// ONLY logged-in users can make a reservation
 router.post(
   '/', 
-  auth, // <--- ADD THIS (The Guard)
+  auth, 
   validate(['user_id', 'resource_id', 'start_time', 'end_time']), 
   async (req, res, next) => {
     try {
