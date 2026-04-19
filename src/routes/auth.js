@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const db = require('../db'); // Only need this once!
 
 // --- REGISTER ROUTE ---
-router.post('/register', async (req, res) => {
+router.post('/register', async (req, res, next) => {
   const { full_name, email, password } = req.body;
 
   try {
@@ -20,18 +20,17 @@ router.post('/register', async (req, res) => {
 
     res.status(201).json({ message: 'User registered successfully!', userId: result.insertId });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Database error or email already exists' });
+    next(err);
   }
 });
 
 // --- LOGIN ROUTE ---
-router.post('/login', async (req, res) => {
+router.post('/login', async (req, res, next) => {
   const { email, password } = req.body;
 
   try {
     // 1. Find the user
-    const sql = 'SELECT * FROM users WHERE email = ?';
+    const sql = 'SELECT user_id, password, role FROM users WHERE email = ?';
     const [results] = await db.query(sql, [email]);
 
     if (results.length === 0) {
@@ -56,8 +55,7 @@ router.post('/login', async (req, res) => {
 
     res.json({ message: 'Login successful', token });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Server error during login' });
+    next(err);
   }
 });
 
