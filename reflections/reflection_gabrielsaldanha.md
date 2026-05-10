@@ -1,0 +1,7 @@
+### Final review, the last dance.
+
+Individual reflection - Gabriel Saldanha.
+
+Over the course of this project, I added a great deal of knowledge about the backend, transitioning from script to creating a modular and secure Express.js system. I discovered the importance of backend engineering organization, as well as logic, as I realized that a logical pipeline needs to be implemented with middleware and centralized error handling to ensure that the application can continue to operate. Collaborating on this codebase also helped me to appreciate professional collaboration standards. I learnt that consistency in folder structure and naming conventions is not just a “nice to have” but a must-have for a large project that can be easily understood by any developer who joins the project and is able to follow the data flow.
+
+The biggest hurdle I faced was integrating JWT authentication flow with our MySQL database, while ensuring strict role-based access control. A lot of precision was needed in my middleware logic to ensure that tokens were properly issued and validated on protected routes. I would love to spend more time implementing automated unit testing using Jest to further strengthen the system from edge case errors, if I had more time. In summary, it's a project that demonstrates my skill as a disciplined and attention-to-detail developer. This API will be used as proof of how I can create a secure, modern API environment for a backend that is ready for production environments.

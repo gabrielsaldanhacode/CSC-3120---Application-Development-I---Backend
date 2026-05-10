@@ -43,3 +43,37 @@ During the final optimization phase of the API, the following improvements were 
 
 * **Code Refactoring & Middleware Flow:** Centralized error handling by routing all `catch` block exceptions through Express's `next(error)` pipeline to the custom `errorHandler.js` middleware. This removed redundant `res.status(500)` boilerplate from the controllers. Furthermore, I verified that authentication and validation middleware execute strictly before business logic.
 * **Database & Performance Improvements:** Updated SQL queries to safely handle empty result sets (`length === 0`) to prevent unexpected crashes. Additionally, I replaced broad `SELECT *` queries in specific routes with targeted field selections (e.g., `SELECT user_id, full_name, email FROM users`), reducing database load and preventing sensitive data like password hashes from being processed or leaked in memory.
+
+### Milestone 8: Final Integration (Current)
+Finalized all routes and ensured end-to-end connectivity.
+
+Performed a code cleanup pass to remove dead code and ensure consistent formatting.
+
+Verified that authentication middleware is enforced on all sensitive endpoints.
+
+### Authentication Overview
+Security is handled via JWT (JSON Web Tokens).
+
+Public Routes: Users can access the Login and Register endpoints freely.
+
+Protected Routes: All other endpoints require a valid token.
+
+Usage: Once logged in, copy the token and include it in the Authorization header of your requests as: Bearer <your_token>.
+
+### API Endpoint Summary
+Auth
+POST /api/auth/register - Create a new user account.
+
+POST /api/auth/login - Authenticate and receive a JWT.
+
+Resources
+GET /api/resources - View all available campus resources.
+
+POST /api/resources - Add a new resource (Admin only).
+
+Reservations
+GET /api/reservations - View all reservations (Admin) or user-specific bookings.
+
+POST /api/reservations - Book a specific resource.
+
+DELETE /api/reservations/:id - Cancel a reservation.
